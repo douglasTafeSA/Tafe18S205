@@ -1,0 +1,270 @@
+/*
+	Title: Basic CSS (Start Finance)
+	Author: Douglas Hudson Walker
+	Author: Markus Ooi
+	Date: 04/09/18
+*/
+body{
+	background-color: white;
+	margin: 0 auto;
+	padding: 0;
+}
+.backgroundImg{
+    background-image: url("../images/logoLarge.png");
+    background-color: transparent;
+    background-position: top right;
+    background-repeat: no-repeat;
+    background-size: auto;
+    position: relative;
+}
+.container{
+	width: 70%;
+	min-width: 850px;
+	margin: 0 auto;
+	
+}
+/*Header*/
+header{
+	width: 70%;
+	float: left;
+	padding-left: 15%;
+	padding-right: 15%;
+	min-width: 850px;
+	background: #efefef;
+	height: 50px;
+}
+header div{
+	width: 49%;
+	float: left;
+}
+header div img{
+	float: left;
+	padding-right: 1%;
+}
+header div h1{
+	font-family: "Calibri Light";
+	font-size: 1.5em;
+	color: black;
+	
+	margin: 0px;
+	padding: 0px;
+	line-height: 50px;
+	float: left;
+}
+/*Navigation*/
+nav{
+	width: 50%;
+	height: 50px;
+	float: left;
+	background: #efefef;
+}
+ul{
+	width: 100%;
+	margin: 0;
+	float: left;
+	padding: 0px;
+}
+ul li{
+	float: right;
+	max-height: 50px;
+	line-height: 50px;
+	width: 20%;
+	
+	list-style: none;
+	
+	font-family: "Calibri Light";
+	font-weight: bold;
+	text-align: center;
+}
+div.tab{
+	display: inline-block;
+	text-align: center;
+}
+/*Navigation Links*/
+li a{
+	display: block;
+	text-decoration: none;
+	color: black;
+}
+li a:hover{
+	color: gray;
+
+}
+li a:visited{
+	color: black;	
+}
+li a:visited:hover{
+	color: gray;
+	font-weight: lighter;
+}
+/*Scetion*/
+section{
+	margin: 2.5%;
+	margin-bottom: 1%;
+	padding: 2%;
+	width: 45%;
+	float:left;
+	background: #efefef;
+	border-radius: 20px;
+	font-family: "Calibri";
+}
+section p{
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	font-size: 18px;
+}
+section h2{
+	margin: 0px;
+	padding: 0px;
+	font-family: "Calibri Light";
+	font-size: 26px;
+}
+section h3{
+	margin: 0;
+	padding: 0;
+}
+.top{
+	margin: 0;
+	margin-left: 2.5%;
+}
+/*Footer*/
+footer{
+	width: 70%;
+	padding-left: 15%;
+	padding-right: 15%;
+	height: 50px;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	min-width: 850px;
+	
+	background: #efefef;
+}
+footer div{
+	margin-left: 50%;
+	width: 50%;
+}
+footer ul{
+	
+}
+/*SOCIAL*/
+div.social{
+	float: left;
+	width: 100%;
+	text-align: center;
+}
+div.social a img{
+	display: inline-block;
+	padding-top: 10px;
+	width: 32px;
+	height: auto;
+	/*-ms-transform: rotate(15deg);  IE 9 */ 
+	/*-webkit-transform: rotate(15deg);  Chrome, Safari, Opera */ 
+	transform: rotate(15deg);
+	
+}
+/*FORM*/
+form h3{
+	color: #e9ceb3;
+	padding: 0;
+	margin: 10px;
+	text-align: center;
+	font-size: 18px;
+	font-family: "special elite"
+}
+div.bord{
+	border: #cc222b 6px ridge;
+	float: left;
+	margin-top: 10px;
+}
+label{
+	display: inline-block;
+	width: 30%;
+	text-align: right;
+	font-family: "alegreya sc";
+	color: #e9ceb3;
+	margin-right: 10px;
+	margin-bottom: 10px;
+}
+input[type=text],
+input[type=email]{
+    display:inline-block;	
+	width: 50%;
+	background-color: #0e0e10;
+	border: none;
+	border-bottom: 3px #2c6d45 ridge;
+	font-family: "libre baskerville";
+	color: #e9ceb3;
+	text-indent: 5px;
+}
+input[type=text]:focus,
+input[type=email]:focus{
+	outline: none;
+	border: none;
+	border-bottom: 3px ridge #cc222b;
+}
+.quest{
+	text-align: center;
+	font-family: "alegreya sc";
+	font-size: medium;
+	margin: 0 auto;
+	padding: 0;
+	color: #e9ceb3;
+}
+input[type=checkbox]{
+	display: inline-block;
+	width: 25%;
+	margin: 0 auto;
+}
+div.check{
+	margin-left: 6.75%;
+	float: left;
+	width: 25%;
+}
+input[type=radio]{
+	display: inline-block;
+	width: 25%;
+	margin: 0 auto;
+}
+div.radi{
+	margin-left: 6.75%;
+	float: left;
+	width: 25%;
+	text-align: left;
+	line-height: 20px;
+}
+div.radi label{
+	width: 50%;
+	text-align: left;
+}
+
+textarea{
+	background-color: #0e0e10;
+	color: #e9ceb3;
+	border: ridge 4px #2c6d45;
+}
+textarea:focus{
+	outline: none;
+	border: ridge 4px #cc222b;
+}
+input[type=submit]{
+	float: left;
+	width: 25%;
+	margin-left: 37.5%;
+	margin-bottom: 10px;
+	
+	background-color: #0e0e10;
+	font-family: "alegreya sc";
+	font-weight: bold;
+	border: #2c6d45 ridge 4px;
+	color: #e9ceb3;
+}
+input[type=submit]:focus{
+	outline: none;
+	border: ridge 3px #cc222b;
+}
+input[required=required]{
+	
+}
+
