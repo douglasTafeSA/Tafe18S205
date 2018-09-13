@@ -20,10 +20,10 @@
         <DataTemplate x:Key="ShoppingListDataViews">
             <Grid>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding productName}" Padding="0,0,25,0"/>
-                    <TextBlock Text="{Binding productPrice}" Padding="0,0,50,0"/>
-                    <TextBlock Text="{Binding productQty}" Padding="0,0,50,0"/>
-                    <TextBlock Text="{Binding productTotal}"/>
+                    <TextBlock Text="{Binding shopName}" Padding="0,0,25,0"/>
+                    <TextBlock Text="{Binding nameOfItem}" Padding="0,0,50,0"/>
+                    <TextBlock Text="{Binding shoppingDate}" Padding="0,0,50,0"/>
+                    <TextBlock Text="{Binding priceQuoted}"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>
@@ -96,15 +96,16 @@
             <PivotItem Header="Add Shopping List">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="223"/>
+                        <RowDefinition Height="313"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="0"
                             Orientation="Vertical" VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch">
-                        <TextBox x:Name="_ShoppingListName" PlaceholderText="Apples" Header="Description"/>
-                        <TextBox x:Name="MoneyIn" Header="Price" PlaceholderText="0.50" TextWrapping="Wrap" InputScope="Number"/>
-                        <TextBox  x:Name="QtyInput" Header="Quantity" PlaceholderText="1"  InputScope="Number" Height="62" TextWrapping="Wrap"></TextBox>
+                        <TextBox x:Name="tbShopName" PlaceholderText="Apples" Header="Shop Name"/>
+                        <TextBox x:Name="tbItemName" Header="Name of Item" PlaceholderText="0.50" TextWrapping="Wrap" InputScope="Number"/>
+                        <DatePicker  x:Name="tbShopDate" Header="Shopping Date" Height="62"></DatePicker>
+                        <TextBox  x:Name="tbPriceQuote" Header="Price Quoted" PlaceholderText="1"  InputScope="Number" Height="62" TextWrapping="Wrap"/>
                     </StackPanel>
                     <ListView x:Name="ShoppingListView" Grid.Row="1"
                               HorizontalAlignment="Stretch"
@@ -112,7 +113,7 @@
                               ItemTemplate="{StaticResource ShoppingListDataViews}">
                         <RelativePanel.Below>pageStart</RelativePanel.Below>
                     </ListView>
-                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="5,189,0,0" TextWrapping="Wrap" Text="Description     Price     Quanity    Total" VerticalAlignment="Top" Width="1369"/>
+                    <TextBlock HorizontalAlignment="Left" Height="24" Margin="10,279,0,0" TextWrapping="Wrap" Text="Shop Name     Name of Item     Shopping Date    Price Quoted" VerticalAlignment="Top" Width="1369"/>
                 </Grid>
             </PivotItem>
         </Pivot>

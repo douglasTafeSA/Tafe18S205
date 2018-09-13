@@ -7,16 +7,17 @@ using SQLite.Net.Attributes;
 
 namespace StartFinance.Models
 {
-    public class ShoppingList
+    public class ShoppingLists
     {
         [PrimaryKey, AutoIncrement]
-        public int productID { get; set; }
+        public int shoppingItemID { get; set; }
         [NotNull]
-        public string productName { get; set; }
+        public string shopName { get; set; }
         [NotNull]
-        public int productQty {get; set;}
+        public string nameOfItem { get; set; }
         [NotNull]
-        public double productPrice { get; set; }
-        public double productTotal { get; set; }
+        public DateTime shoppingDate { get; set; }
+        [NotNull]
+        public double priceQuoted { get; set; }
     }
 }

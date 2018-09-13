@@ -41,8 +41,8 @@ namespace StartFinance.Views
 
         public void Results()
         {
-            conn.CreateTable<ShoppingList>();
-            var query1 = conn.Table<ShoppingList>();
+            conn.CreateTable<ShoppingLists>();
+            var query1 = conn.Table<ShoppingLists>();
             ShoppingListView.ItemsSource = query1.ToList();
         }
 
@@ -50,22 +50,22 @@ namespace StartFinance.Views
         {
             try
             {
-                if (_ShoppingListName.Text.ToString() == "" || QtyInput.Text.ToString() == "" || MoneyIn.Text.ToString() == "")
+                if (tbShopName.Text.ToString() == "" || tbShopDate.ToString() == "" || tbItemName.Text.ToString() == "" || tbPriceQuote.ToString() == "")
                 {
-                    MessageDialog dialog = new MessageDialog("No value entered", "Must enter a name, quantity and price..!");
+                    MessageDialog dialog = new MessageDialog("No value entered", "Must enter a Shop Name, Item name and price..!");
                     await dialog.ShowAsync();
                 }
                 else
                 {
-                    double TempMoney = Convert.ToDouble(MoneyIn.Text);
-                    int quantity = Convert.ToInt32(QtyInput.Text);
-                    conn.CreateTable<ShoppingList>();
-                    conn.Insert(new ShoppingList
+                    double priceQuote = Convert.ToDouble(tbPriceQuote.Text);
+                    DateTime date = tbShopDate.Date.DateTime;
+                    conn.CreateTable<ShoppingLists>();
+                    conn.Insert(new ShoppingLists
                     {
-                        productName = _ShoppingListName.Text.ToString(),
-                        productPrice = TempMoney,
-                        productQty = quantity,
-                        productTotal = TempMoney * quantity
+                        nameOfItem = tbItemName.Text.ToString(),
+                        priceQuoted = priceQuote,
+                        shopName = tbShopName.Text.ToString(),
+                        shoppingDate = date.ToLocalTime()
                     });
                     // Creating table
                     Results();
@@ -80,7 +80,7 @@ namespace StartFinance.Views
                 }
                 else if (ex is SQLiteException)
                 {
-                    MessageDialog dialog = new MessageDialog("ShoppingList could no tbe created, Try again with new values", "Oops..!");
+                    MessageDialog dialog = new MessageDialog("ShoppingLists could no tbe created, Try again with new values", "Oops..!");
                     await dialog.ShowAsync();
                 }
                 else
@@ -97,7 +97,7 @@ namespace StartFinance.Views
                 int AccSelection;
                 try
                 {
-                    AccSelection = ((ShoppingList)ShoppingListView.SelectedItem).productID;
+                    AccSelection = ((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID;
                 }
                 catch
                 {
@@ -106,9 +106,9 @@ namespace StartFinance.Views
                     return;
                 }
                 
-                conn.CreateTable<ShoppingList>();
-                var query1 = conn.Table<ShoppingList>();
-                var query3 = conn.Query<ShoppingList>("DELETE FROM ShoppingList WHERE productID = " + AccSelection);
+                conn.CreateTable<ShoppingLists>();
+                var query1 = conn.Table<ShoppingLists>();
+                var query3 = conn.Query<ShoppingLists>("DELETE FROM ShoppingLists WHERE shoppingItemID = " + AccSelection);
                 ShoppingListView.ItemsSource = query1.ToList();
             }
             catch (NullReferenceException)
