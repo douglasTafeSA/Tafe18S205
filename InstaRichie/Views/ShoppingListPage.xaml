@@ -85,6 +85,7 @@
             <!--primary commands-->
             <controls:PageHeader.PrimaryCommands>
                 <AppBarButton Icon="Add" Label="Add ShoppingList" Click="AddShoppingList_Click"/>
+                <AppBarButton Icon="Save" Label="Save ShoppingList" Click="SaveItem_Click" />
                 <AppBarButton Icon="Delete" Label="Delete ShoppingList" Click="DeleteItem_Click"/>
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
@@ -102,15 +103,17 @@
                     <StackPanel Grid.Row="0"
                             Orientation="Vertical" VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch">
-                        <TextBox x:Name="tbShopName" PlaceholderText="Apples" Header="Shop Name"/>
-                        <TextBox x:Name="tbItemName" Header="Name of Item" PlaceholderText="0.50" TextWrapping="Wrap" InputScope="Number"/>
+                        <TextBox x:Name="tbShopName" PlaceholderText="JB-Hi-Fi" Header="Shop Name"/>
+                        <TextBox x:Name="tbItemName" Header="Name of Item" PlaceholderText="Dell 24' UHD LCD Monitor" TextWrapping="Wrap" InputScope="Number"/>
                         <DatePicker  x:Name="tbShopDate" Header="Shopping Date" Height="62"></DatePicker>
-                        <TextBox  x:Name="tbPriceQuote" Header="Price Quoted" PlaceholderText="1"  InputScope="Number" Height="62" TextWrapping="Wrap"/>
+                        <TextBox  x:Name="tbPriceQuote" Header="Price Quoted" PlaceholderText="589.92" Height="62" TextWrapping="Wrap"/>
                     </StackPanel>
                     <ListView x:Name="ShoppingListView" Grid.Row="1"
                               HorizontalAlignment="Stretch"
                               VerticalAlignment="Stretch"
-                              ItemTemplate="{StaticResource ShoppingListDataViews}">
+                              ItemTemplate="{StaticResource ShoppingListDataViews}"
+                              ItemClick="ShoppingListView_ItemClick"
+                              IsItemClickEnabled="True">
                         <RelativePanel.Below>pageStart</RelativePanel.Below>
                     </ListView>
                     <TextBlock HorizontalAlignment="Left" Height="24" Margin="10,279,0,0" TextWrapping="Wrap" Text="Shop Name     Name of Item     Shopping Date    Price Quoted" VerticalAlignment="Top" Width="1369"/>

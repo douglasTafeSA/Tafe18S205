@@ -65,7 +65,7 @@ namespace StartFinance.Views
                         nameOfItem = tbItemName.Text.ToString(),
                         priceQuoted = priceQuote,
                         shopName = tbShopName.Text.ToString(),
-                        shoppingDate = date.ToLocalTime()
+                        shoppingDate = date
                     });
                     // Creating table
                     Results();
@@ -94,10 +94,10 @@ namespace StartFinance.Views
         {
             try
             {
-                int AccSelection;
+                int listSelection;
                 try
                 {
-                    AccSelection = ((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID;
+                    listSelection = ((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID;
                 }
                 catch
                 {
@@ -108,7 +108,7 @@ namespace StartFinance.Views
                 
                 conn.CreateTable<ShoppingLists>();
                 var query1 = conn.Table<ShoppingLists>();
-                var query3 = conn.Query<ShoppingLists>("DELETE FROM ShoppingLists WHERE shoppingItemID = " + AccSelection);
+                var query3 = conn.Query<ShoppingLists>("DELETE FROM ShoppingLists WHERE shoppingItemID = " + listSelection);
                 ShoppingListView.ItemsSource = query1.ToList();
             }
             catch (NullReferenceException)
@@ -118,9 +118,63 @@ namespace StartFinance.Views
             }
         }
 
+        
+
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             Results();
+        }
+
+        private async void SaveItem_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                ShoppingLists listSelection;
+                try
+                {
+                    listSelection = conn.Find<ShoppingLists>(((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID);
+                    listSelection.shopName = tbShopName.Text;
+                    listSelection.shoppingDate = tbShopDate.Date.DateTime;
+                    listSelection.nameOfItem = tbItemName.Text;
+                    listSelection.priceQuoted = double.Parse(tbPriceQuote.Text);
+                    try
+                    {
+                        
+                        conn.Update(listSelection);
+                    }
+                    catch
+                    {
+                        MessageDialog dialog = new MessageDialog("Could not update Shopping List", "Please try again!!");
+                        await dialog.ShowAsync();
+                        return;
+                    }
+                    
+                }
+                catch
+                {
+                    MessageDialog dialog = new MessageDialog("No selected Item or input invalid", "Oops..!");
+                    await dialog.ShowAsync();
+                    return;
+                }
+
+                Results();
+               
+            }
+            catch (NullReferenceException)
+            {
+                MessageDialog dialog = new MessageDialog("Not selected the Item", "Oops..!");
+                await dialog.ShowAsync();
+            }
+        }
+
+        private void ShoppingListView_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            ShoppingLists sList = (ShoppingLists)e.ClickedItem;
+            tbShopName.Text = sList.shopName;
+            DateTime date = sList.shoppingDate;
+            tbShopDate.Date = date;
+            tbItemName.Text = sList.nameOfItem;
+            tbPriceQuote.Text = sList.priceQuoted.ToString();
         }
     }
 }
