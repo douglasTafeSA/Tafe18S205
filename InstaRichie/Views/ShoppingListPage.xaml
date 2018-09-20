@@ -20,10 +20,7 @@
         <DataTemplate x:Key="ShoppingListDataViews">
             <Grid>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="{Binding shopName}" Padding="0,0,25,0"/>
-                    <TextBlock Text="{Binding nameOfItem}" Padding="0,0,50,0"/>
-                    <TextBlock Text="{Binding shoppingDate}" Padding="0,0,50,0"/>
-                    <TextBlock Text="{Binding priceQuoted}"/>
+                    <TextBlock Text="{Binding}" Padding="0,0,25,0"/>
                 </StackPanel>
             </Grid>
         </DataTemplate>

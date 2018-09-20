@@ -41,8 +41,8 @@ namespace StartFinance.Views
 
         public void Results()
         {
-            conn.CreateTable<ShoppingLists>();
-            var query1 = conn.Table<ShoppingLists>();
+            conn.CreateTable<ShoppingList>();
+            var query1 = conn.Table<ShoppingList>();
             ShoppingListView.ItemsSource = query1.ToList();
         }
 
@@ -59,8 +59,8 @@ namespace StartFinance.Views
                 {
                     double priceQuote = Convert.ToDouble(tbPriceQuote.Text);
                     DateTime date = tbShopDate.Date.DateTime;
-                    conn.CreateTable<ShoppingLists>();
-                    conn.Insert(new ShoppingLists
+                    conn.CreateTable<ShoppingList>();
+                    conn.Insert(new ShoppingList
                     {
                         nameOfItem = tbItemName.Text.ToString(),
                         priceQuoted = priceQuote,
@@ -80,7 +80,7 @@ namespace StartFinance.Views
                 }
                 else if (ex is SQLiteException)
                 {
-                    MessageDialog dialog = new MessageDialog("ShoppingLists could no tbe created, Try again with new values", "Oops..!");
+                    MessageDialog dialog = new MessageDialog("ShoppingList could no tbe created, Try again with new values", "Oops..!");
                     await dialog.ShowAsync();
                 }
                 else
@@ -97,7 +97,7 @@ namespace StartFinance.Views
                 int listSelection;
                 try
                 {
-                    listSelection = ((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID;
+                    listSelection = ((ShoppingList)ShoppingListView.SelectedItem).shoppingItemID;
                 }
                 catch
                 {
@@ -106,9 +106,9 @@ namespace StartFinance.Views
                     return;
                 }
                 
-                conn.CreateTable<ShoppingLists>();
-                var query1 = conn.Table<ShoppingLists>();
-                var query3 = conn.Query<ShoppingLists>("DELETE FROM ShoppingLists WHERE shoppingItemID = " + listSelection);
+                conn.CreateTable<ShoppingList>();
+                var query1 = conn.Table<ShoppingList>();
+                var query3 = conn.Query<ShoppingList>("DELETE FROM ShoppingList WHERE shoppingItemID = " + listSelection);
                 ShoppingListView.ItemsSource = query1.ToList();
             }
             catch (NullReferenceException)
@@ -129,10 +129,10 @@ namespace StartFinance.Views
         {
             try
             {
-                ShoppingLists listSelection;
+                ShoppingList listSelection;
                 try
                 {
-                    listSelection = conn.Find<ShoppingLists>(((ShoppingLists)ShoppingListView.SelectedItem).shoppingItemID);
+                    listSelection = conn.Find<ShoppingList>(((ShoppingList)ShoppingListView.SelectedItem).shoppingItemID);
                     listSelection.shopName = tbShopName.Text;
                     listSelection.shoppingDate = tbShopDate.Date.DateTime;
                     listSelection.nameOfItem = tbItemName.Text;
@@ -169,10 +169,10 @@ namespace StartFinance.Views
 
         private void ShoppingListView_ItemClick(object sender, ItemClickEventArgs e)
         {
-            ShoppingLists sList = (ShoppingLists)e.ClickedItem;
+            ShoppingList sList = (ShoppingList)e.ClickedItem;
             tbShopName.Text = sList.shopName;
             DateTime date = sList.shoppingDate;
-            tbShopDate.Date = date;
+            tbShopDate.Date = Convert.ToDateTime(date);
             tbItemName.Text = sList.nameOfItem;
             tbPriceQuote.Text = sList.priceQuoted.ToString();
         }
