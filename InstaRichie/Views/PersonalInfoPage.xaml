@@ -19,7 +19,7 @@
                     <TextBlock Text="{Binding PersonalID}" Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding FirstName}" Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding LastName}" Padding="0,0,15,0"/>
-                    <TextBlock Text="{Binding DOB}"  Padding="0,0,15,0"/>
+                    <TextBlock Text="{Binding DOBString}"   Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding Gender}" Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding EmailAddress}" Padding="0,0,15,0"/>
                     <TextBlock Text="{Binding MobilePhone}"/>
@@ -81,10 +81,11 @@
 
             <!--  secondary commands  -->
             <controls:PageHeader.PrimaryCommands>
-                <AppBarButton Icon="Add" Label="Add Personal Info" Click="AddPInfo_Click" />
-                <AppBarButton Icon="Edit" Label="Edit Personal Info" Click="EditPInfo_Click" />
-                <AppBarButton Icon="Save" Label="Update Personal Info" Click="UpdatePInfo_Click" />
-                <AppBarButton Icon="Delete" Label="Delete Personal Info" Click="DeletePInfo_Click" />
+                <AppBarButton x:Name="ClearSelectionButton" Icon="ClearSelection" Label="Clear Selection" Click="ClearSelectionButton_Click"/>
+                <AppBarButton x:Name="AddBarButton" Icon="Add" Label="Add Personal Info" Click="AddPInfo_Click" />
+                <AppBarButton x:Name="EditBarButton" Icon="Edit" Label="Edit Personal Info" Click="EditPInfo_Click" IsEnabled="False" />
+                <AppBarButton x:Name="UpdateBarButton" Icon="Save" Label="Update Personal Info" Click="UpdatePInfo_Click" IsEnabled="False"/>
+                <AppBarButton x:Name="DeleteBarButton" Icon="Delete" Label="Delete Personal Info" Click="DeletePInfo_Click" />
             </controls:PageHeader.PrimaryCommands>
         </controls:PageHeader>
 
@@ -107,7 +108,7 @@
                             <TextBox x:Name="LastNameTextBox" Header="Last Name" PlaceholderText="Enter your Last Name" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="50,0,0,0"/>
                             <TextBox x:Name="GenderTextBox" Header="Gender" PlaceholderText="Enter your Gender (M/F)" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="50,0,0,0"/>
                         </StackPanel>
-                        <DatePicker x:Name="DOBDatePicker" Header="Date Of Birth" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
+                        <DatePicker x:Name="DOBDatePicker" Header="Date Of Birth" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
                         <TextBox x:Name="EmailAddressTextBox" Header="EmailAddress" PlaceholderText="Enter your Email Address" TextWrapping="Wrap"/> 
                         <TextBox x:Name="MobilePhoneTextBox" Header="Mobile Phone Number" PlaceholderText="Enter your Mobile Phone number" InputScope="Number" TextWrapping="Wrap"/>
                         
@@ -115,7 +116,7 @@
 
                     </StackPanel>
                     <ListView x:Name="PersonalInfoList" Grid.Row="1" ItemTemplate="{StaticResource PersonalInfoListView}"
-                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="PersonalInfoList_SelectionChanged">
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="PersonalInfoList_SelectionChanged" >
                         <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
                 </Grid>
