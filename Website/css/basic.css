@@ -21,7 +21,6 @@ body{
 	width: 70%;
 	min-width: 850px;
 	margin: 0 auto;
-	
 }
 /*Header*/
 header{
@@ -114,6 +113,9 @@ section p{
 	width: 100%;
 	font-size: 18px;
 }
+section p a{
+	text-decoration: none;
+}
 section h2{
 	margin: 0px;
 	padding: 0px;
@@ -124,9 +126,21 @@ section h3{
 	margin: 0;
 	padding: 0;
 }
+section h4{
+	margin-bottom: 0;
+	padding: 0;
+}
+section span{
+	background-color: #ffffff;
+	margin-left: 20px;
+	padding: 1px 5px;
+}
 .top{
 	margin: 0;
 	margin-left: 2.5%;
+}
+section:last-child{
+	margin-bottom: 100px;
 }
 /*Footer*/
 footer{
@@ -138,32 +152,13 @@ footer{
 	left: 0;
 	bottom: 0;
 	min-width: 850px;
-	
 	background: #efefef;
 }
 footer div{
 	margin-left: 50%;
 	width: 50%;
 }
-footer ul{
-	
-}
-/*SOCIAL*/
-div.social{
-	float: left;
-	width: 100%;
-	text-align: center;
-}
-div.social a img{
-	display: inline-block;
-	padding-top: 10px;
-	width: 32px;
-	height: auto;
-	/*-ms-transform: rotate(15deg);  IE 9 */ 
-	/*-webkit-transform: rotate(15deg);  Chrome, Safari, Opera */ 
-	transform: rotate(15deg);
-	
-}
+
 /*FORM*/
 form h3{
 	color: #e9ceb3;
