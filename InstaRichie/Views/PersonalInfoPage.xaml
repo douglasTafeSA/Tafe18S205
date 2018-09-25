@@ -96,7 +96,7 @@
             <PivotItem Header="Personal Info">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="325"/>
+                        <RowDefinition Height="345"/>
                         <RowDefinition Height="*"/>
                     </Grid.RowDefinitions>
                     <StackPanel x:Name="PageStart" Grid.Row="0" VerticalAlignment="Top"
@@ -109,16 +109,16 @@
                             <TextBox x:Name="GenderTextBox" Header="Gender" PlaceholderText="Enter your Gender (M/F)" TextWrapping="Wrap" HorizontalAlignment="Stretch" Margin="50,0,0,0"/>
                         </StackPanel>
                         <DatePicker x:Name="DOBDatePicker" Header="Date Of Birth" HorizontalAlignment="Left" VerticalAlignment="Stretch" />
-                        <TextBox x:Name="EmailAddressTextBox" Header="EmailAddress" PlaceholderText="Enter your Email Address" TextWrapping="Wrap"/> 
+                        <TextBox x:Name="EmailAddressTextBox" Header="Email Address" PlaceholderText="Enter your Email Address" TextWrapping="Wrap"/>
                         <TextBox x:Name="MobilePhoneTextBox" Header="Mobile Phone Number" PlaceholderText="Enter your Mobile Phone number" InputScope="Number" TextWrapping="Wrap"/>
-                        
-
-
+                        <TextBlock Margin="0,15,0,0" TextWrapping="Wrap" Text="Personal ID  |   First Name  |   Last Name   |   Gender  |   Date Of Birth   |   Email Address   |   Mobile Phone Number" HorizontalAlignment="Stretch"/>
                     </StackPanel>
+                   
                     <ListView x:Name="PersonalInfoList" Grid.Row="1" ItemTemplate="{StaticResource PersonalInfoListView}"
                               HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SelectionChanged="PersonalInfoList_SelectionChanged" >
                         <RelativePanel.Below>PageStart</RelativePanel.Below>
                     </ListView>
+                    
                 </Grid>
             </PivotItem>
         </Pivot>

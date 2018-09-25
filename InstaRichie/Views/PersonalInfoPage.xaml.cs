@@ -221,13 +221,7 @@ namespace StartFinance.Views
                 {
                     //Labels
                     int PersonalInfoLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).PersonalID;
-                    string FirstNameLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).FirstName;
-                    string LastNameLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).LastName;
-                    DateTime DOBLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).DOB;                   
-                    string GenderLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).Gender;
-                    string EmailAddressLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).EmailAddress;
-                    string MobilePhoneLabel = ((PersonalInfo)PersonalInfoList.SelectedItem).MobilePhone;
-
+                    
                     //Data inputs
                     int PersonalInfoInput = Convert.ToInt32(PersonalIDTextBox.Text);
                     string FirstNameInput = FirstNameTextBox.Text;
@@ -239,11 +233,11 @@ namespace StartFinance.Views
                     string EmailAddressInput = EmailAddressTextBox.Text;
                     string MobilePhoneInput = MobilePhoneTextBox.Text;
 
-                    var queryupdate = conn.Query<PersonalInfo>("UPDATE PersonalInfo SET " + PersonalInfoLabel + "= '" + 
-                        PersonalInfoInput + "' ," + FirstNameLabel + "= '" + FirstNameInput + "' , " + LastNameLabel + "= '" + 
-                        LastNameInput + "' ," + DOBLabel + "= '" + DOBInput + "' , " + GenderLabel + "= '" + GenderInput + "' , " +
-                        EmailAddressLabel + "= '" + EmailAddressInput + "' , " + MobilePhoneLabel + "= '" + MobilePhoneInput + "'" +
-                        "WHERE PersonalID ='" + PersonalInfoLabel + "'");
+                    var queryupdate = conn.Query<PersonalInfo>("UPDATE PersonalInfo SET  PersonalID = '" +
+                        PersonalInfoInput + "' , FirstName = '" + FirstNameInput + "' , LastName = '" +
+                        LastNameInput + "' , DOB = '" + DOBInput + "' , Gender = '" + GenderInput + "' , EmailAddress = '" +
+                        EmailAddressInput + "' , MobilePhone = '" + MobilePhoneInput + "'" +
+                        " WHERE PersonalID = '" + PersonalInfoLabel + "';");
                     ((PersonalInfo)PersonalInfoList.SelectedItem).convertDateToShortDate();
                     Results();           
                     conn.CreateTable<PersonalInfo>();
